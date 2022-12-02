@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -17,11 +16,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private String name;
     private String email;
 
-    private Date date;
+    private String name;
+
+    // java.sql
     private Timestamp timestamp;
 
     // java.time (desired)
@@ -37,14 +36,6 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -53,12 +44,12 @@ public class User {
         this.email = email;
     }
 
-    public Date getDate() {
-        return date;
+    public String getName() {
+        return name;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Timestamp getTimestamp() {
@@ -91,5 +82,18 @@ public class User {
 
     public void setInstant(Instant instant) {
         this.instant = instant;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", timestamp=" + timestamp +
+                ", localDateTime=" + localDateTime +
+                ", zonedDateTime=" + zonedDateTime +
+                ", instant=" + instant +
+                '}';
     }
 }
